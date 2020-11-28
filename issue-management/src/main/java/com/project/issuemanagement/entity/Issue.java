@@ -42,16 +42,18 @@ public class Issue extends BaseEntity {
 	@Column(name = "date")
 	private Date date;
 
-	@JoinColumn(name = "assignee_user_id")
+	@Column(name = "issueStatus")
+	@Enumerated(EnumType.STRING) // DB de bu verinin nasıl durmasını istiyoruz?
+	private IssueStatus issueStatus;
+
+	@JoinColumn(name = "assigneeUserId")
 	@ManyToOne(optional = true, fetch = FetchType.LAZY) // Object oluşturulurken User object ataması opsiyonel
 														// //FetchType.LAZY - select atılırken Join object yalnızca
 														// getter ı çağrıldığında getirilsin
 	private User assignee;
 
-	/*
-	 * @Column(name = "issueStatus")
-	 * 
-	 * @Enumerated(EnumType.STRING) //DB de bu verinin nasıl durmasını istiyoruz?
-	 * private IssueStatus issueStatus;
-	 */
+	@JoinColumn(name = "projectId")
+	@ManyToOne(optional = true, fetch = FetchType.LAZY)
+	private Project project;
+
 }

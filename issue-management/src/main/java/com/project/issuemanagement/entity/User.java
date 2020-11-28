@@ -37,14 +37,15 @@ public class User extends BaseEntity{
 	@Column(name = "pwd", length = 200)
 	private String password;
 	
-	@Column(name = "name_surname", length = 200)
+	@Column(name = "nameSurname", length = 200)
 	private String nameSurname;
 	
 	@Column(name = "email", length = 100)
 	private String email;
 	
-	@JoinColumn(name = "assignee_user_id")
+	@JoinColumn(name = "assigneeUserId")
 	@OneToMany(fetch = FetchType.LAZY)
 	private List<Issue> issues;
+	
 	
 }
